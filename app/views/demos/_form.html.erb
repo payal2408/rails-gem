@@ -1,0 +1,36 @@
+<%= form_with(model: demo) do |form| %>
+  <% if demo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(demo.errors.count, "error") %> prohibited this demo from being saved:</h2>
+
+      <ul>
+        <% demo.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "form-control img" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :body %>
+    <%= form.text_area :body, class: "form-control img" %>
+  </div>
+  <div class="row">
+  <div class="col-sm-6">
+    <%= form.label :upload_pdf_file %><br> 
+    <%= form.file_field :cover_photo,  class: "mb-2" %>
+  </div>
+  <div class="col-sm-6">
+    <%= form.label :upload_images %><br> 
+    <%= form.file_field :images, multiple: true, class: "mb-2" %>
+  </div>
+</div>
+  <div class="actions">
+    <%= form.submit  class: "btn bg-primary btn-sm text-white btn-block mt-3" %>
+  </div>
+<% end %>

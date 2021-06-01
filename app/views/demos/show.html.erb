@@ -1,0 +1,26 @@
+<div class="container">
+	<div class="card shadow p-3 m-3 img">
+		<p id="notice"><%= notice %></p>
+
+		<p>
+		  <strong>Title:</strong>
+		  <%= @demo.title %>
+		</p>
+
+		<p>
+		  <strong>Body:</strong>
+		  <%= @demo.body %>
+		</p>
+		
+		<%= link_to @demo.cover_photo.filename, rails_blob_path(@demo.cover_photo, disposition: "attachment") %>
+		<% (0...@demo.images.count).each do |image| %>
+				<div class="w-25 h-20">
+					<%= image_tag(@demo.images[image], class: "w-100")%>
+				</div>
+			<%end %> 
+		<div>
+			<%= link_to 'Edit', edit_demo_path(@demo), class: "btn btn-outline-primary btn-sm mt-2 " %> 
+			<%= link_to 'Back', demos_path, class: "btn btn-outline-primary btn-sm mt-2 float-right" %>
+		</div>
+	</div>
+</div>
